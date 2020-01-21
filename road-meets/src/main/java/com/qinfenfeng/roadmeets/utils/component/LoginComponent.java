@@ -1,0 +1,71 @@
+package com.qinfenfeng.roadmeets.utils.component;
+
+import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
+import com.qinfenfeng.roadmeets.mbg.mapper.UserInfoMapper;
+import com.qinfenfeng.roadmeets.mbg.model.UserInfo;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Component;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.concurrent.TimeUnit;
+
+/**
+ * 这个类记录了用户信息
+ * @author 蒋文龙
+ * @date 2020/1/21
+ */
+@Component
+public class LoginComponent {
+    private static ThreadLocal<UserInfo> entryset = new ThreadLocal<>();
+
+    /**
+     * 插入用户
+     * @param userInfo
+     */
+    public static void addUser(UserInfo userInfo){
+        entryset.set(userInfo);
+    }
+
+    /**
+     * 获得用户信息
+     * @return
+     */
+    public static Object getUserInfo(){
+        return entryset.get();
+    }
+
+    /**
+     * 获得用户ID
+     * @return
+     */
+    public static Long getUserId(){
+        return entryset.get().getId();
+    }
+
+    /**
+     * 获得openId
+     * @return
+     */
+    public static String getOpenId(){
+        return entryset.get().getOpenIdMin();
+    }
+
+    /**
+     * 获得unionId
+     * @return
+     */
+    public static String getUnionId(){
+        return entryset.get().getUnionId();
+    }
+
+    /**
+     * 注销用户，并清除此次链接
+     */
+    public static void clear(){
+        entryset.remove();
+    }
+
+}

@@ -199,10 +199,7 @@
             <version>4.3.5</version>
         </dependency>
         <!--SpringSecurity依赖配置-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+
         <!--Hutool Java工具包-->
         <dependency>
             <groupId>cn.hutool</groupId>
@@ -236,6 +233,11 @@
             <groupId> org.springframework.boot </groupId>
             <artifactId> spring-boot-configuration-processor </artifactId>
             <optional> true </optional>
+        </dependency>
+        <dependency>
+            <groupId>com.github.dozermapper</groupId>
+            <artifactId>dozer-spring-boot-starter</artifactId>
+            <version>6.2.0</version>
         </dependency>
 
     </dependencies>

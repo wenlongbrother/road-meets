@@ -4,6 +4,7 @@ import com.qinfenfeng.roadmeets.mbg.model.UserInfo;
 import com.qinfenfeng.roadmeets.mbg.model.UserInfoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import springfox.documentation.annotations.Cacheable;
 
 public interface UserInfoMapper {
     /**

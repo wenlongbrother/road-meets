@@ -13,6 +13,7 @@ public class JSONUtils {
         return jsonObject;
     }
     public static JSONObject fail(Exception e){
+        e.printStackTrace();
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("msg", FAIL_MSG);
         jsonObject.put("code", "0");
