@@ -1,0 +1,11 @@
+{
+  "groups": [
+    {
+      "name": "weixin",
+      "type": "com.qinfenfeng.roadmeets.Test",
+      "sourceType": "com.qinfenfeng.roadmeets.Test"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}
