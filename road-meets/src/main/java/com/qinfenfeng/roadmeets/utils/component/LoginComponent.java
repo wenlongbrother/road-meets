@@ -1,16 +1,7 @@
 package com.qinfenfeng.roadmeets.utils.component;
 
-import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
-import com.qinfenfeng.roadmeets.mbg.mapper.UserInfoMapper;
 import com.qinfenfeng.roadmeets.mbg.model.UserInfo;
-import org.aspectj.lang.annotation.Before;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.concurrent.TimeUnit;
 
 /**
  * 这个类记录了用户信息

@@ -1,13 +1,8 @@
 package com.qinfenfeng.roadmeets.service;
 
-import com.alibaba.fastjson.JSONObject;
 import com.qinfenfeng.roadmeets.dto.LoginRequestDto;
 import com.qinfenfeng.roadmeets.dto.UserInfoDto;
-import com.qinfenfeng.roadmeets.mbg.model.UserInfo;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
@@ -21,6 +16,6 @@ public interface UserService {
      * @param loginRequestDto
      * @return
      */
-    UserInfoDto loginService(LoginRequestDto loginRequestDto) throws IOException;
+    UserInfoDto loginService(LoginRequestDto loginRequestDto) throws Exception;
 
 }

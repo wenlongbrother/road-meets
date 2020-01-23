@@ -114,7 +114,12 @@
     <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
+--     通过openid进行查询
   </select>
+  <select id="selectByOpenId" parameterType= "java.lang.String" resultMap="BaseResultMap">
+    select * from user_info where open_id_min = #{openIdMin}
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--
       WARNING - @mbggenerated

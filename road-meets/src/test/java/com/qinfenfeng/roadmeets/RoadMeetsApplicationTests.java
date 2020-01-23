@@ -1,10 +1,8 @@
 package com.qinfenfeng.roadmeets;
 
 import com.qinfenfeng.roadmeets.controller.UserController;
-
 import com.qinfenfeng.roadmeets.dto.LoginRequestDto;
 import com.qinfenfeng.roadmeets.utils.component.TokenComponent;
-import io.jsonwebtoken.Claims;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +26,7 @@ public class RoadMeetsApplicationTests {
     @Test
     public void testLogin() throws Exception {
         LoginRequestDto loginRequestDto = new LoginRequestDto("1","1", "1");
-        userController.loginWxController(loginRequestDto);
+        userController.isExistInDB("o4_IB5Tzm8q5tNgz0yWIvejfa3nY");
     }
 
 }

@@ -1,29 +1,22 @@
 package com.qinfenfeng.roadmeets.service.impl;
 
 
-import com.alibaba.fastjson.JSONObject;
 import com.qinfenfeng.roadmeets.dto.LoginRequestDto;
 import com.qinfenfeng.roadmeets.dto.UserInfoDto;
 import com.qinfenfeng.roadmeets.mbg.mapper.UserInfoMapper;
 import com.qinfenfeng.roadmeets.mbg.model.UserInfo;
 import com.qinfenfeng.roadmeets.service.UserService;
-import com.qinfenfeng.roadmeets.utils.common.AesUtils;
 import com.qinfenfeng.roadmeets.utils.common.GetUserInfoUtils;
-import com.qinfenfeng.roadmeets.utils.common.HttpClientUtils;
-
 import com.qinfenfeng.roadmeets.utils.component.TokenComponent;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.IOException;
 import java.util.Date;
 import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 
@@ -53,6 +46,8 @@ public class UserServiceImpl implements UserService {
 
     private UserInfo userInfo;
 
+    private String token;
+
     // 这个变量的作用是保存第一次登陆后的用户实力，这样第一次保存后，就无需再次去entryset中查询
     private UserInfo userInfoFist;
 
@@ -66,7 +61,7 @@ public class UserServiceImpl implements UserService {
      * @throws IOException
      */
     @Override
-    public UserInfoDto loginService(LoginRequestDto loginRequestDto) throws IOException {
+    public UserInfoDto loginService(LoginRequestDto loginRequestDto) throws Exception {
         String jsCode = loginRequestDto.getJsCode();
         String encryptedData = loginRequestDto.getEncryptedData();
         String iv = loginRequestDto.getIv();
@@ -97,6 +92,7 @@ public class UserServiceImpl implements UserService {
         // 利用Dozer进行bean到dto的转换
         userInfoDto = dozerMapper.map(userInfo, UserInfoDto.class);
         userInfoDto.setSessionKey(SessionKey);
+        userInfoDto.setToken(token);
         return userInfoDto;
     }
 
@@ -111,9 +107,8 @@ public class UserServiceImpl implements UserService {
             UserInfo userInfoMySQL = userInfoMapper.selectByOpenId(openId);
             if (userInfoMySQL != null) {
                 //使用userInfo的Id生成为期七天的Token
-                String token = null;
                 try {
-                    token = tokenComponent.createJWTToken(userInfoMySQL.getId(), userInfoDto.getNickName(), tokenPassTime);
+                    token = tokenComponent.createJWTToken(userInfoMySQL.getId(), userInfoMySQL.getNickName(), tokenPassTime);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

@@ -1,11 +1,8 @@
 package com.qinfenfeng.roadmeets.config;
 
 import com.qinfenfeng.roadmeets.interceptor.LoginInterceptor;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
  * 拦截器配置类

@@ -1,7 +1,10 @@
 package com.qinfenfeng.roadmeets.utils.common;
 
 import com.alibaba.fastjson.JSONObject;
+import com.qinfenfeng.roadmeets.utils.exception.CodeExcpetion;
+import com.qinfenfeng.roadmeets.utils.exception.FrequencyException;
 import org.apache.commons.codec.binary.Base64;
+import org.aspectj.apache.bcel.classfile.Code;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -56,7 +59,7 @@ public class GetUserInfoUtils {
      * 获得解密文件中的数据
      * @return
      */
-    public Map<String, String> getUserInfo(String jsCode, String encryptedData, String iv) throws IOException {
+    public Map<String, String> getUserInfo(String jsCode, String encryptedData, String iv) throws Exception {
         Map<String, String> UserInfoMap = new HashMap<>();
         //获得请求url
         String url = "https://api.weixin.qq.com/sns/jscode2session?" +
@@ -68,10 +71,10 @@ public class GetUserInfoUtils {
         JSONObject jsonObject = HttpClientUtils.doGet(url);
         // 对errocode进行判断
         if (jsonObject.get("errcode").equals(40029)) {
-            throw new IOException("对不起，code 无效");
+            throw new CodeExcpetion();
         }
         if (jsonObject.get("errcode").equals(45011)) {
-            throw new IOException("频率限制，每个用户每分钟100次");
+            throw new FrequencyException();
         }
         // 优雅的获取session_key
         Optional<String> notNullSessionKey = Optional.ofNullable(jsonObject.getString("session_key"));
