@@ -4,6 +4,7 @@ import com.qinfenfeng.roadmeets.dto.LoginRequestDto;
 import com.qinfenfeng.roadmeets.dto.UserInfoDto;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 /**
  * Wxservice接口
@@ -18,4 +19,12 @@ public interface UserService {
      */
     UserInfoDto loginService(LoginRequestDto loginRequestDto) throws Exception;
 
+    /**
+     * 用户位置接口
+     * @param token Token
+     * @param longitude 经度
+     * @param latitude  纬度
+     * @return
+     */
+    boolean userLocation(String token, Double longitude, Double latitude);
 }

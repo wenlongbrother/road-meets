@@ -47,7 +47,7 @@ public class Team implements Serializable {
      *
      * @mbggenerated Mon Jan 13 15:22:13 CST 2020
      */
-    private Long originId;
+    protected Long originId;
 
     /**
      *
@@ -56,7 +56,7 @@ public class Team implements Serializable {
      *
      * @mbggenerated Mon Jan 13 15:22:13 CST 2020
      */
-    private Long destinationId;
+    protected Long destinationId;
 
     /**
      *
@@ -65,7 +65,7 @@ public class Team implements Serializable {
      *
      * @mbggenerated Mon Jan 13 15:22:13 CST 2020
      */
-    private Date targetTime;
+    protected Date targetTime;
 
     /**
      *
@@ -74,7 +74,7 @@ public class Team implements Serializable {
      *
      * @mbggenerated Mon Jan 13 15:22:13 CST 2020
      */
-    private Byte finished;
+    protected Byte finished;
 
     /**
      *
@@ -83,7 +83,7 @@ public class Team implements Serializable {
      *
      * @mbggenerated Mon Jan 13 15:22:13 CST 2020
      */
-    private String scene;
+    protected String scene;
 
     /**
      *

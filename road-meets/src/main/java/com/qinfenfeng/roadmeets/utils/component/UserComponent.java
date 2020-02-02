@@ -1,23 +1,23 @@
 package com.qinfenfeng.roadmeets.utils.component;
 
 import com.qinfenfeng.roadmeets.mbg.model.UserInfo;
-import org.springframework.stereotype.Component;
 
 /**
  * 这个类记录了用户信息
  * @author 蒋文龙
  * @date 2020/1/21
  */
-@Component
-public class LoginComponent {
-    private static ThreadLocal<UserInfo> entryset = new ThreadLocal<>();
 
+public class UserComponent {
+    private static ThreadLocal<UserInfo> entryset = new ThreadLocal<>();
+    private static int[] num = new int[1];
     /**
      * 插入用户
      * @param userInfo
      */
     public static void addUser(UserInfo userInfo){
         entryset.set(userInfo);
+        num[0] = num[0] + 1;
     }
 
     /**
@@ -57,6 +57,10 @@ public class LoginComponent {
      */
     public static void clear(){
         entryset.remove();
+        num[0] = num[0] - 1;
     }
 
+    public static int num(){
+        return num[0];
+    }
 }

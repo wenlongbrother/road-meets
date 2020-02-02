@@ -1,10 +1,7 @@
 package com.qinfenfeng.roadmeets.interceptor;
 
-import com.qinfenfeng.roadmeets.mbg.mapper.UserInfoMapper;
 import com.qinfenfeng.roadmeets.mbg.model.UserInfo;
-import com.qinfenfeng.roadmeets.utils.component.LoginComponent;
-import org.aspectj.lang.annotation.Before;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.qinfenfeng.roadmeets.utils.component.UserComponent;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -34,7 +31,7 @@ public class LoginInterceptor implements HandlerInterceptor{
         }
         // 刷新token
         redisTemplate.expire(token, 7, TimeUnit.DAYS);
-        LoginComponent.addUser(userInfo);
+        UserComponent.addUser(userInfo);
         return true;
     }
 }

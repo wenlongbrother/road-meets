@@ -49,3 +49,7 @@ weixin:
   secret: 240cff92d69e85dd7c4be7a591df7173
 logging:
   path=/spring/log
+
+Team:
+  passTime: 14 # 形成过期时间，单位：天
+  distanc: 3 # 多少范围内的订单推送
