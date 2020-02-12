@@ -11,7 +11,7 @@ public class Message implements Serializable {
      *
      * @mbggenerated Mon Jan 13 15:22:13 CST 2020
      */
-    private Integer id;
+    protected Integer id;
 
     /**
      *

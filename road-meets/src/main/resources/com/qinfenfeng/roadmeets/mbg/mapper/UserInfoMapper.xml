@@ -383,4 +383,5 @@
       deleted = #{deleted,jdbcType=TINYINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
 </mapper>

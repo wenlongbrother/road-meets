@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 9090
 
 spring:
   datasource:
@@ -40,16 +40,29 @@ mybatis:
     - classpath:mapper/*.xml
     - classpath*:com/**/mapper/*.xml
 
+
 secretKey: 7786df7fc3a34e26a61c034d5ec8245d
 
-TokenPassTime: 604 800000
+TokenPassTime: 604800000
 # 微信配置
 weixin:
-  appID: wx8e72c0c098dad0c8
-  secret: 240cff92d69e85dd7c4be7a591df7173
-logging:
-  path=/spring/log
+#  appID: wx04659b17ae69b0ac
+#  secret: 0ff0371e5da59df24d4292397ace8294
+   appID: wx8e72c0c098dad0c8
+   secret: cd2c367c501588233d4c94e419760882
 
 Team:
-  passTime: 14 # 形成过期时间，单位：天
-  distanc: 3 # 多少范围内的订单推送
+  passTime: 7 # 行程过期时间，单位：天
+  distance: 3 # 多少范围内的订单推送
+
+# 信鸽配置
+xinge:
+  appID: aed49ff8f26ab
+  secretKey: 30381cf109841f308092485db17f353f
+logging:
+  level:
+    com:
+      qinfenfeng:
+        roadmeets:
+          mbg:
+            mapper: debug

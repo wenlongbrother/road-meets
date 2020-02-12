@@ -12,7 +12,7 @@ public class NoUserException extends Exception{
         super("对不起，请登录");
     }
     @ResponseBody
-    @ExceptionHandler(ReleaseTeamException.class)
+    @ExceptionHandler(NoUserException.class)
     public JSONObject handleException(Exception e){
         return JSONUtils.fail(e);
     }

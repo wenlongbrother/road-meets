@@ -122,6 +122,9 @@
     from message
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectByScene" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from message where scene = #{scene}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
       WARNING - @mbggenerated

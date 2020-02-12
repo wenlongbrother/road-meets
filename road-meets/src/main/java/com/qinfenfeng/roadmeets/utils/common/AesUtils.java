@@ -1,6 +1,7 @@
 package com.qinfenfeng.roadmeets.utils.common;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.springframework.stereotype.Component;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -10,9 +11,10 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.*;
 
+@Component
 public class AesUtils {
 
-    public static boolean initialized = false;
+    private boolean initialized = false;
 
     /**
      * AES对称解密工具类
@@ -27,7 +29,7 @@ public class AesUtils {
         initialize();
         try {
             // java是没有
-            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS7Padding");
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS7Padding", "BC");
             Key sKeySpec = new SecretKeySpec(keyByte, "AES");
             // 初始化
             cipher.init(Cipher.DECRYPT_MODE, sKeySpec, generateIV(ivByte));
@@ -51,7 +53,7 @@ public class AesUtils {
         return null;
     }
 
-    public static void initialize() {
+    private void initialize() {
         if (initialized) {
             return;
         }
@@ -60,7 +62,7 @@ public class AesUtils {
     }
 
     // 生成iv
-    public static AlgorithmParameters generateIV(byte[] iv) throws Exception {
+    private AlgorithmParameters generateIV(byte[] iv) throws Exception {
         AlgorithmParameters params = AlgorithmParameters.getInstance("AES");
         params.init(new IvParameterSpec(iv));
         return params;

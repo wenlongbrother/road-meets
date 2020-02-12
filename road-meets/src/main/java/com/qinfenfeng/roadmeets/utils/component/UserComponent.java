@@ -10,21 +10,19 @@ import com.qinfenfeng.roadmeets.mbg.model.UserInfo;
 
 public class UserComponent {
     private static ThreadLocal<UserInfo> entryset = new ThreadLocal<>();
-    private static int[] num = new int[1];
     /**
      * 插入用户
      * @param userInfo
      */
     public static void addUser(UserInfo userInfo){
         entryset.set(userInfo);
-        num[0] = num[0] + 1;
     }
 
     /**
      * 获得用户信息
      * @return
      */
-    public static Object getUserInfo(){
+    public static UserInfo getUserInfo(){
         return entryset.get();
     }
 
@@ -57,10 +55,7 @@ public class UserComponent {
      */
     public static void clear(){
         entryset.remove();
-        num[0] = num[0] - 1;
     }
 
-    public static int num(){
-        return num[0];
-    }
+
 }

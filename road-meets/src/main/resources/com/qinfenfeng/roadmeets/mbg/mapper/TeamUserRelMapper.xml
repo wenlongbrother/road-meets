@@ -122,6 +122,14 @@
     from team_user_rel
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectByTeamId" parameterType="com.qinfenfeng.roadmeets.dto.vo.TeamInfoVo" resultMap="BaseResultMap">
+    select * from team_user_rel where team_id = #{teamId} and type = #{userType};
+  </select>
+  <select id="selectByTeamIdUserId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select * from team_user_rel
+    where team_id = #{teamId}
+    and user_id != #{userId}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
       WARNING - @mbggenerated
@@ -330,4 +338,27 @@
       deleted = #{deleted,jdbcType=TINYINT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <update id="updateEvaluteByTeamIdUserId" parameterType="com.qinfenfeng.roadmeets.mbg.model.TeamUserRel">
+    update team_user_rel
+    set  evaluate = #{evaluate, jdbcType=TINYINT}
+    where user_id = #{userId}
+    and team_id = #{teamId}
+  </update>
+  <update id="updateTypeByTeamIdUserId" parameterType="com.qinfenfeng.roadmeets.mbg.model.TeamUserRel">
+    update team_user_rel
+    set  type = #{type, jdbcType=TINYINT}
+    where user_id = #{userId}
+    and team_id = #{teamId}
+  </update>
+
+  <update id="updateTypeByTeamIdAntiUserId" parameterType="com.qinfenfeng.roadmeets.dto.vo.TeamUserRelVo">
+    update team_user_rel
+    set  type = #{type, jdbcType=TINYINT}
+    where user_id != #{monitorId}
+    and user_id != #{memberId}
+    and team_id = #{teamId}
+  </update>
+  <select id="selectByUserId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select * from team_user_rel where user_id = #{userId}
+  </select>
 </mapper>

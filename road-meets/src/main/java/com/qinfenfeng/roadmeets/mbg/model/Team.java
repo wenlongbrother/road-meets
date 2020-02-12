@@ -11,7 +11,7 @@ public class Team implements Serializable {
      *
      * @mbggenerated Mon Jan 13 15:22:13 CST 2020
      */
-    private Long id;
+    protected Long id;
 
     /**
      *
@@ -74,7 +74,7 @@ public class Team implements Serializable {
      *
      * @mbggenerated Mon Jan 13 15:22:13 CST 2020
      */
-    protected Byte finished;
+    private Byte finished;
 
     /**
      *

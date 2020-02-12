@@ -17,7 +17,7 @@ public class JSONUtils {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("msg", FAIL_MSG);
         jsonObject.put("code", "0");
-        jsonObject.put("Exception", e.getMessage());
+        jsonObject.put("data", e.getMessage());
         return jsonObject;
     }
 }

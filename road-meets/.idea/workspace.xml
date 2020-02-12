@@ -2,46 +2,88 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88a61dd5-a7bf-49ab-9d23-09724cb9dee3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/controller/TeamController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/LocationDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/TeamDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/mbg/model/UserCache.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/TeamService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/impl/TeamServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/common/GeoHashUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/component/LocationComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/exception/NoUserException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/exception/ReleaseTeamException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_2_2_2_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_config_5_2_1_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_5_2_1_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_2_1_RELEASE.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/config/WebSocketConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/controller/ChatController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/controller/FriendController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/AdviceTeamDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/AgreeJoinDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/EndTeamDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/EvaluateDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/FriendDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/GroupChatDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/JoinTeamDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/MessageDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/PrivateChatDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/ReleaseTeamDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/StartEndDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/TeamChatDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/TeamInfoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/vo/JoinTeamVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/vo/TeamInfoVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/vo/TeamUserRelVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/interceptor/AdviceTeamInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/interceptor/SessionInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/interceptor/TokenInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/ChatService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/FriendService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/impl/ChatServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/impl/FriendServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/common/ChatRoomUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/common/PushUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/common/RSAUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/exception/FriendException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/exception/JoinUserException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/exception/MonitorException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/exception/NoTeamException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/exception/TeamMemberException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/exception/TokenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/road-meets.iml" beforeDir="false" afterPath="$PROJECT_DIR$/road-meets.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/RoadMeetsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/RoadMeetsApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/config/InterceptorConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/config/InterceptorConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/controller/TeamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/controller/TeamController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/LoginRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/LoginRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/TeamDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/UserInfoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/UserInfoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/UserLocationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/TeamUserLocationDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/interceptor/LoginInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/interceptor/LoginInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/mbg/mapper/FriendMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/mbg/mapper/FriendMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/mbg/mapper/MessageMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/mbg/mapper/MessageMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/mbg/mapper/TeamMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/mbg/mapper/TeamMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/mbg/mapper/TeamUserRelMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/mbg/mapper/TeamUserRelMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/mbg/model/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/mbg/model/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/mbg/model/Friend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/mbg/model/Friend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/mbg/model/FriendExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/mbg/model/FriendExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/mbg/model/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/mbg/model/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/mbg/model/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/mbg/model/Team.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/mbg/model/TeamUserRel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/mbg/model/TeamUserRel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/TeamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/TeamService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/impl/TeamServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/impl/TeamServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/component/LoginComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/component/UserComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/common/AesUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/common/AesUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/common/GeoHashUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/common/GeoHashUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/common/GetUserInfoUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/common/GetUserInfoUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/common/JSONUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/common/JSONUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/component/LocationComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/component/LocationComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/component/UserComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/component/UserComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/exception/FrequencyException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/exception/FrequencyException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/exception/NoUserException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/exception/NoUserException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/filter/CROSFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/utils/filter/CROSFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/qinfenfeng/roadmeets/mbg/mapper/FriendMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/qinfenfeng/roadmeets/mbg/mapper/FriendMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/qinfenfeng/roadmeets/mbg/mapper/MessageMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/qinfenfeng/roadmeets/mbg/mapper/MessageMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/qinfenfeng/roadmeets/mbg/mapper/TeamMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/qinfenfeng/roadmeets/mbg/mapper/TeamMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/qinfenfeng/roadmeets/mbg/mapper/TeamUserRelMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/qinfenfeng/roadmeets/mbg/mapper/TeamUserRelMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/qinfenfeng/roadmeets/mbg/mapper/UserInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/qinfenfeng/roadmeets/mbg/mapper/UserInfoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/generator.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/generator.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/qinfenfeng/roadmeets/RoadMeetsApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/qinfenfeng/roadmeets/RoadMeetsApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/road-meets.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/qinfenfeng/roadmeets/RoadMeetsApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qinfenfeng/roadmeets/RoadMeetsApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/qinfenfeng/roadmeets/config/SpringSecurityConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/qinfenfeng/roadmeets/controller/WxController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/qinfenfeng/roadmeets/mbg/mapper/UserInfoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qinfenfeng/roadmeets/mbg/mapper/UserInfoMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/qinfenfeng/roadmeets/mbg/mapper/UserInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qinfenfeng/roadmeets/mbg/mapper/UserInfoMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/qinfenfeng/roadmeets/mbg/model/UserInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qinfenfeng/roadmeets/mbg/model/UserInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/qinfenfeng/roadmeets/service/WxService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/qinfenfeng/roadmeets/service/impl/WxServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/qinfenfeng/roadmeets/utils/common/JSONUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qinfenfeng/roadmeets/utils/common/JSONUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/META-INF/road-meets.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/META-INF/spring-configuration-metadata.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/qinfenfeng/roadmeets/RoadMeetsApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/qinfenfeng/roadmeets/RoadMeetsApplicationTests.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,6 +93,23 @@
   </component>
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="209" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -63,7 +122,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="dev" />
+        <entry key="$PROJECT_DIR$/.." value="code" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -79,15 +138,19 @@
     <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1WKSqAuZKO04taVLpkoNI3uswJB" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ExpandSpringBootSpringBootSettingsPanel" value="false" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="E:/归欤/guiyu" />
+    <property name="last_opened_file_path" value="E:/各类毕设/OpenCV_image_comparator-master" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -100,7 +163,19 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="Errors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.qinfenfeng.roadmeets.utils.exception" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.qinfenfeng.roadmeets.dto" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\行遇\road-meets\src\main\resources\static" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
@@ -120,12 +195,12 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.RoadMeetsApplication (1)">
-    <configuration name="Generator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.qinfenfeng.roadmeets.mbg.Generator" />
+    <configuration name="RSAUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.qinfenfeng.roadmeets.utils.common.RSAUtils" />
       <module name="road-meets" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.qinfenfeng.roadmeets.mbg.*" />
+          <option name="PATTERN" value="com.qinfenfeng.roadmeets.utils.common.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -133,17 +208,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RoadMeetsApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RoadMeetsApplicationTests.testFilter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="road-meets" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.qinfenfeng.roadmeets.utils.filter.*" />
+          <option name="PATTERN" value="com.qinfenfeng.roadmeets.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.qinfenfeng.roadmeets" />
       <option name="MAIN_CLASS_NAME" value="com.qinfenfeng.roadmeets.RoadMeetsApplicationTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="testFilter" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RoadMeetsApplicationTests.testFriend" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="road-meets" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.qinfenfeng.roadmeets.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.qinfenfeng.roadmeets" />
+      <option name="MAIN_CLASS_NAME" value="com.qinfenfeng.roadmeets.RoadMeetsApplicationTests" />
+      <option name="METHOD_NAME" value="testFriend" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -152,7 +244,7 @@
       <module name="road-meets" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.qinfenfeng.roadmeets.utils.filter.*" />
+          <option name="PATTERN" value="com.qinfenfeng.roadmeets.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -177,48 +269,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RoadMeetsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="road-meets" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.qinfenfeng.roadmeets.utils.filter.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.qinfenfeng.roadmeets.utils.filter.RoadMeetsApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RoadMeetsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="road-meets" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.qinfenfeng.roadmeets.utils.filter.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.qinfenfeng.roadmeets.utils.filter.RoadMeetsApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.RoadMeetsApplication (1)" />
-        <item itemvalue="Spring Boot.RoadMeetsApplication" />
+        <item itemvalue="JUnit.RoadMeetsApplicationTests.testFriend" />
+        <item itemvalue="JUnit.RoadMeetsApplicationTests.testFilter" />
+        <item itemvalue="Application.RSAUtils" />
         <item itemvalue="JUnit.RoadMeetsApplicationTests.testLogin" />
-        <item itemvalue="JUnit.RoadMeetsApplicationTests" />
-        <item itemvalue="Application.Generator" />
       </list>
     </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="allServicesViewState">
       <serviceView>
-        <option name="contentProportion" value="0.047131147" />
+        <option name="contentProportion" value="0.20150273" />
         <treeState>
-          <expand />
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@43c2fdcd" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@43c2fdcd" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@176f7a02" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+          </expand>
           <select />
         </treeState>
       </serviceView>
@@ -248,7 +324,24 @@
       <workItem from="1580359987107" duration="8543000" />
       <workItem from="1580434208259" duration="1681000" />
       <workItem from="1580528859466" duration="2942000" />
-      <workItem from="1580608500589" duration="2234000" />
+      <workItem from="1580608500589" duration="3088000" />
+      <workItem from="1580632736578" duration="94000" />
+      <workItem from="1580634795795" duration="7184000" />
+      <workItem from="1580719520427" duration="5922000" />
+      <workItem from="1580781897098" duration="18761000" />
+      <workItem from="1580809091139" duration="7785000" />
+      <workItem from="1580825818398" duration="1430000" />
+      <workItem from="1580871337682" duration="18814000" />
+      <workItem from="1580957781626" duration="18706000" />
+      <workItem from="1581054434263" duration="6956000" />
+      <workItem from="1581136170742" duration="5100000" />
+      <workItem from="1581218456579" duration="15866000" />
+      <workItem from="1581254349148" duration="10294000" />
+      <workItem from="1581304342043" duration="18496000" />
+      <workItem from="1581389047329" duration="1481000" />
+      <workItem from="1581394001183" duration="5795000" />
+      <workItem from="1581401042638" duration="18254000" />
+      <workItem from="1581472232696" duration="22256000" />
     </task>
     <servers />
   </component>
@@ -267,5 +360,34 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/impl/UserServiceImpl.java</url>
+          <line>166</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/impl/FriendServiceImpl.java</url>
+          <line>123</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/impl/TeamServiceImpl.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/road_meets$RoadMeetsApplication__1_.ic" NAME="RoadMeetsApplication (1) Coverage Results" MODIFIED="1580799623979" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.qinfenfeng.roadmeets.*</FILTER>
+    </SUITE>
   </component>
 </project>

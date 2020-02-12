@@ -1,9 +1,12 @@
 package com.qinfenfeng.roadmeets.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.qinfenfeng.roadmeets.dto.TeamDto;
+import com.qinfenfeng.roadmeets.dto.*;
+import com.qinfenfeng.roadmeets.dto.vo.JoinTeamVo;
 import com.qinfenfeng.roadmeets.service.TeamService;
 import com.qinfenfeng.roadmeets.utils.common.JSONUtils;
+import com.qinfenfeng.roadmeets.utils.exception.JoinUserException;
+import com.qinfenfeng.roadmeets.utils.exception.MonitorException;
 import com.qinfenfeng.roadmeets.utils.exception.NoUserException;
 import com.qinfenfeng.roadmeets.utils.exception.ReleaseTeamException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +25,15 @@ public class TeamController {
     /**
      * 用户发布行程
      * @param request
-     * @param teamDto
+     * @param releaseTeamDto
      * @return
      * @throws ReleaseTeamException
      * @throws NoUserException
      */
     @PostMapping("/releaseTeam")
-    public boolean releaseTeam(HttpServletRequest request, @RequestBody TeamDto teamDto) throws ReleaseTeamException,
+    public JSONObject releaseTeam(HttpServletRequest request, @RequestBody ReleaseTeamDto releaseTeamDto) throws ReleaseTeamException,
             NoUserException {
-        String token = request.getHeader("token");
-        return teamService.releaseTeam(token, teamDto);
+        return JSONUtils.success(teamService.releaseTeam(releaseTeamDto));
     }
 
     /**
@@ -42,5 +44,51 @@ public class TeamController {
     @GetMapping("/adviceTeam")
     public JSONObject adviceTeam()throws NoUserException{
         return JSONUtils.success(teamService.adviceTeam());
+    }
+
+    /**
+     * 加入行程
+     * @param request
+     * @param joinTeamDto
+     * @return
+     */
+    @PostMapping("/joinTeam")
+    public JSONObject joinTeam(HttpServletRequest request, @RequestBody JoinTeamDto joinTeamDto){
+        return JSONUtils.success(teamService.joinTeam(joinTeamDto));
+    }
+
+    @GetMapping("/teamInfo")
+    public JSONObject teamInfo(Long teamId){
+        return JSONUtils.success(teamService.teamInfo(teamId));
+    }
+
+    @PostMapping("/endTeam")
+    public JSONObject endTeam(@RequestBody EndTeamDto endTeamDto) throws MonitorException {
+        return JSONUtils.success(teamService.endTeam(endTeamDto.getTeamId()));
+    }
+
+    @GetMapping("/selectTeam")
+    public JSONObject selectTeam(LocationDto locationDto) throws NoUserException {
+        return JSONUtils.success(teamService.selectTeam(locationDto));
+    }
+
+    @GetMapping("/historyTeam")
+    public JSONObject historyTeam(){
+        return JSONUtils.success(teamService.teamHistory());
+    }
+
+    @GetMapping("/joinState")
+    public JSONObject joinState(Long teamId){
+        return JSONUtils.success(teamService.joinState(teamId));
+    }
+
+    @GetMapping("/getJoinUserId")
+    public JSONObject getJoinUserId(Long teamId){
+        return JSONUtils.success(teamService.getJoinUserId(teamId));
+    }
+
+    @PostMapping("/agreeJoin")
+    public JSONObject agreeJoin(@RequestBody AgreeJoinDto agreeJoinDto) throws JoinUserException {
+        return JSONUtils.success(teamService.agreeJoin(agreeJoinDto));
     }
 }

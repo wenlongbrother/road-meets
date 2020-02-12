@@ -12,7 +12,7 @@ public class Address implements Serializable {
      *
      * @mbggenerated Mon Jan 13 15:22:13 CST 2020
      */
-    private Long id;
+    protected Long id;
 
     /**
      *

@@ -3,24 +3,27 @@ package com.qinfenfeng.roadmeets.service.impl;
 
 import com.qinfenfeng.roadmeets.dto.LocationDto;
 import com.qinfenfeng.roadmeets.dto.LoginRequestDto;
+import com.qinfenfeng.roadmeets.dto.TeamUserLocationDto;
 import com.qinfenfeng.roadmeets.dto.UserInfoDto;
-import com.qinfenfeng.roadmeets.dto.UserLocationDto;
 import com.qinfenfeng.roadmeets.mbg.mapper.UserInfoMapper;
 import com.qinfenfeng.roadmeets.mbg.model.UserInfo;
 import com.qinfenfeng.roadmeets.service.UserService;
-import com.qinfenfeng.roadmeets.utils.common.GeoHashUtil;
+import com.qinfenfeng.roadmeets.utils.common.GeoHashUtils;
 import com.qinfenfeng.roadmeets.utils.common.GetUserInfoUtils;
 import com.qinfenfeng.roadmeets.utils.component.LocationComponent;
 import com.qinfenfeng.roadmeets.utils.component.TokenComponent;
 import com.qinfenfeng.roadmeets.utils.component.UserComponent;
+import com.qinfenfeng.roadmeets.utils.exception.NoUserException;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -50,10 +53,17 @@ public class UserServiceImpl implements UserService {
     private UserInfoDto userInfoDto;
 
     private UserInfo userInfo;
+    // 将这个工具类注入进来，这个工具类与其他工具类不同
+    // 使用了@Resource注解，因此必须要将其放到IOC容器，使用@Resource的方式注入
+    @Resource
+    private GeoHashUtils geoHashUtil;
+
 
     // 这个变量的作用是保存第一次登陆后的用户实力，这样第一次保存后，就无需再次去entryset中查询
     private UserInfo userInfoFist;
 
+    // 用来保存token
+    private String token;
 
     /**
      * 登录逻辑
@@ -63,7 +73,7 @@ public class UserServiceImpl implements UserService {
      * @throws IOException
      */
     @Override
-    public UserInfoDto loginService(LoginRequestDto loginRequestDto) throws IOException {
+    public UserInfoDto loginService(LoginRequestDto loginRequestDto) throws Exception {
         String jsCode = loginRequestDto.getJsCode();
         String encryptedData = loginRequestDto.getEncryptedData();
         String iv = loginRequestDto.getIv();
@@ -72,9 +82,9 @@ public class UserServiceImpl implements UserService {
         }
         // 从解密文件中获取以下信息
         Map<String, String> userInfoMap= getUserInfoUtils.getUserInfo(jsCode, encryptedData, iv);
-        String openId = userInfoMap.get("openid");
-        String unionId = userInfoMap.get("unionid");
-        String SessionKey = userInfoMap.get("SessionKey");
+        String openId = userInfoMap.get("openId");
+        String unionId = userInfoMap.get("unionId");
+//        String SessionKey = userInfoMap.get("SessionKey");
         Byte gender = Byte.valueOf(userInfoMap.get("gender"));
         String nickName = userInfoMap.get("nickName");
         String avatarUrl = userInfoMap.get("avatarUrl");
@@ -88,14 +98,18 @@ public class UserServiceImpl implements UserService {
             userInfo.setGmtModified(date);
             userInfo.setOpenIdMin(openId);
             userInfo.setAvatarUrl(avatarUrl);
-            userInfo.setUnionId(unionId);
+//            userInfo.setUnionId(unionId);
             userInfo.setNickName(nickName);
             userInfo.setGender(gender);
+            userInfo.setDeleted((byte) 0);
             userInfoMapper.insert(userInfo);
+            token = tokenComponent.createJWTToken(userInfo.getId(), nickName, tokenPassTime);
+            redisTemplate.opsForValue().set(token, userInfo, 7, TimeUnit.DAYS);
+            redisTemplate.opsForValue().set(userInfo.getId(), userInfo, 7, TimeUnit.DAYS);
         }
         // 利用Dozer进行bean到dto的转换
         userInfoDto = dozerMapper.map(userInfo, UserInfoDto.class);
-        userInfoDto.setSessionKey(SessionKey);
+        userInfoDto.setToken(token);
         return userInfoDto;
     }
 
@@ -113,10 +127,45 @@ public class UserServiceImpl implements UserService {
         long userId = userInfo.getId();
         locationDto.setLongitude(longitude);
         locationDto.setLatitude(latitude);
-        redisTemplate.opsForValue().set(token,locationDto,30,TimeUnit.MINUTES);
+//        redisTemplate.opsForValue().set("userLocation" + userId,locationDto,30,TimeUnit.MINUTES);
         //更新geo用户位置
         saveUserLocationIntoPlace(userId,longitude,latitude);
-        return false;
+        return true;
+    }
+
+    /**
+     * 查看用户的信息
+     * @param userId
+     * @return
+     */
+    @Override
+    public UserInfoDto getUserInfoByUserId(Long userId) throws NoUserException {
+        UserInfo user = (UserInfo) redisTemplate.opsForValue().get(userId);
+        if(userInfo == null){
+            user = userInfoMapper.selectByPrimaryKey(userId);
+            if(user == null){
+                throw new NoUserException();
+            }
+        }
+        UserInfoDto userInfoDto = dozerMapper.map(user, UserInfoDto.class);
+        return userInfoDto;
+    }
+
+    /**
+     * 通过token获得用户信息
+     * @return
+     * @throws NoUserException
+     */
+    @Override
+    public UserInfo getUserInfoByToken() throws NoUserException {
+        UserInfo userInfo = UserComponent.getUserInfo();
+        return userInfo;
+    }
+
+    @Override
+    public int onlineNumber(LocationDto locationDto) {
+        List<Long> longs = geoHashUtil.nearBySearchUser(3, locationDto.getLongitude(), locationDto.getLatitude());
+        return longs.size();
     }
 
     /**
@@ -126,13 +175,14 @@ public class UserServiceImpl implements UserService {
      * @param latitude  纬度
      */
     private void saveUserLocationIntoPlace(long userId,Double longitude,Double latitude){
-        GeoHashUtil geoHashUtil = new GeoHashUtil();
+
         LocationDto location = new LocationDto(longitude, latitude);
-        UserLocationDto userLocation = new UserLocationDto(userId);
-        userLocation.setLongitude(longitude);
-        userLocation.setLatitude(latitude);
-        geoHashUtil.save(userLocation);
+        // 这个地方使用方便
+        TeamUserLocationDto userLocation = new TeamUserLocationDto(userId, longitude, latitude);
+        geoHashUtil.saveUser(userLocation);
+        // 放入entryset中
         LocationComponent.setLocation(location);
+        redisTemplate.opsForValue().set("userLocation:" + userId, userLocation);
     }
 
 
@@ -149,15 +199,15 @@ public class UserServiceImpl implements UserService {
             UserInfo userInfoMySQL = userInfoMapper.selectByOpenId(openId);
             if (userInfoMySQL != null) {
                 //使用userInfo的Id生成为期七天的Token
-                String token = null;
                 try {
-                    token = tokenComponent.createJWTToken(userInfoMySQL.getId(), userInfoDto.getNickName(), tokenPassTime);
+                    token = tokenComponent.createJWTToken(userInfoMySQL.getId(), userInfoMySQL.getNickName(), tokenPassTime);
+                    userInfoFist = userInfoMySQL;
+                    UserComponent.addUser(userInfoMySQL);
+                    redisTemplate.opsForValue().set(token, userInfoMySQL, 7, TimeUnit.DAYS);
+                    redisTemplate.opsForValue().set(userInfoMySQL.getId(), userInfoMySQL, 7, TimeUnit.DAYS);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                userInfoFist = userInfoMySQL;
-                UserComponent.addUser(userInfoMySQL);
-                redisTemplate.opsForValue().set(token, userInfoMySQL, 7, TimeUnit.DAYS);
                 return true;
             }
         return false;

@@ -93,4 +93,6 @@ public interface TeamMapper {
      * @mbggenerated Mon Jan 13 15:22:13 CST 2020
      */
     int updateByPrimaryKey(Team record);
+
+    List<Team> selectTeamByCreator(Long Creator);
 }

@@ -1,7 +1,6 @@
 package com.qinfenfeng.roadmeets.utils.component;
 
 import com.qinfenfeng.roadmeets.dto.LocationDto;
-import com.qinfenfeng.roadmeets.mbg.model.UserInfo;
 
 public class LocationComponent {
     private static ThreadLocal<LocationDto> entryset = new ThreadLocal<>();

@@ -259,7 +259,13 @@
             <artifactId>activation</artifactId>
             <version>1.1.1</version>
         </dependency>
-
+        <!--   RSA加密包     -->
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
     <repositories>
     <repository>
@@ -281,7 +287,7 @@
                 </executions>
                 <configuration>
                     <fork>true</fork>
-                    <mainClass>com.yangkw.tadpole.TadpoleApplication</mainClass>
+                    <mainClass>com.qinfenfeng.roadmeets.RoadMeetsApplication</mainClass>
                     <!--打包的时候把引入的也打包-->
                     <includeSystemScope>true</includeSystemScope>
                 </configuration>

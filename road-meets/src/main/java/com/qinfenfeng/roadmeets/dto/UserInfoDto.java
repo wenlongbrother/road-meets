@@ -14,9 +14,13 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserInfoDto extends UserInfo implements Serializable {
+public class UserInfoDto implements Serializable {
     private String Token;
-    private String SessionKey;
+    private Long id;
+    private String nickName;
+    private String avatarUrl;
+    private Byte gender;
+    private String phoneNum;
     private static final long serialVersionUID = -6803590988262278173L;
 
 }
