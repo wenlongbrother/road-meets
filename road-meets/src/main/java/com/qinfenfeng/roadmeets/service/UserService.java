@@ -22,6 +22,12 @@ public interface UserService {
      * @return
      */
     UserInfoDto loginService(LoginRequestDto loginRequestDto) throws Exception;
+    /**
+     * 登录接口
+     * @param code
+     * @return
+     */
+    UserInfoDto loginAndroidService(String code) throws Exception;
 
     /**
      * 用户位置接口

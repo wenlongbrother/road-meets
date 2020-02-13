@@ -17,6 +17,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.websocket.server.PathParam;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -42,6 +43,20 @@ public class UserController {
             return JSONUtils.fail(e);
         }
     }
+    /**
+     * 登录，安卓
+     * @return
+     */
+    @PostMapping("/loginAndroid")
+    public JSONObject loginAndroidController(@PathParam("code") String code){
+        try {
+            JSONObject jsonObject = JSONUtils.success(userService.loginAndroidService(code));
+            return jsonObject;
+        } catch (Exception e) {
+            return JSONUtils.fail(e);
+        }
+    }
+
     @PostMapping("/userLocation")
     public JSONObject userLocation(HttpServletRequest request, @RequestBody LocationDto locationDto)throws Exception{
         String token = request.getHeader("token");
