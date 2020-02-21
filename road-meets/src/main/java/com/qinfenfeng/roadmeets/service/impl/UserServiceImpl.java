@@ -1,15 +1,14 @@
 package com.qinfenfeng.roadmeets.service.impl;
 
 
-import com.qinfenfeng.roadmeets.dto.LocationDto;
-import com.qinfenfeng.roadmeets.dto.LoginRequestDto;
-import com.qinfenfeng.roadmeets.dto.TeamUserLocationDto;
-import com.qinfenfeng.roadmeets.dto.UserInfoDto;
+import com.alibaba.fastjson.JSONObject;
+import com.qinfenfeng.roadmeets.dto.*;
 import com.qinfenfeng.roadmeets.mbg.mapper.UserInfoMapper;
 import com.qinfenfeng.roadmeets.mbg.model.UserInfo;
 import com.qinfenfeng.roadmeets.service.UserService;
 import com.qinfenfeng.roadmeets.utils.common.GeoHashUtils;
 import com.qinfenfeng.roadmeets.utils.common.GetUserInfoUtils;
+import com.qinfenfeng.roadmeets.utils.common.HttpClientUtils;
 import com.qinfenfeng.roadmeets.utils.component.LocationComponent;
 import com.qinfenfeng.roadmeets.utils.component.TokenComponent;
 import com.qinfenfeng.roadmeets.utils.component.UserComponent;
@@ -83,6 +82,62 @@ public class UserServiceImpl implements UserService {
         // 从解密文件中获取以下信息
         Map<String, String> userInfoMap= getUserInfoUtils.getUserInfo(jsCode, encryptedData, iv);
         String openId = userInfoMap.get("openId");
+        String unionId = userInfoMap.get("unionId");
+//        String SessionKey = userInfoMap.get("SessionKey");
+        Byte gender = Byte.valueOf(userInfoMap.get("gender"));
+        String nickName = userInfoMap.get("nickName");
+        String avatarUrl = userInfoMap.get("avatarUrl");
+        if (isExistInDB(openId)) {
+            // 如果存在获取
+            userInfo = userInfoFist;
+        } else {
+            // 如果不存在就插入数据库
+            userInfo = new UserInfo();
+            userInfo.setGmtCreate(date);
+            userInfo.setGmtModified(date);
+            userInfo.setOpenIdMin(openId);
+            userInfo.setAvatarUrl(avatarUrl);
+//            userInfo.setUnionId(unionId);
+            userInfo.setNickName(nickName);
+            userInfo.setGender(gender);
+            userInfo.setDeleted((byte) 0);
+            userInfoMapper.insert(userInfo);
+            token = tokenComponent.createJWTToken(userInfo.getId(), nickName, tokenPassTime);
+            redisTemplate.opsForValue().set(token, userInfo, 7, TimeUnit.DAYS);
+            redisTemplate.opsForValue().set(userInfo.getId(), userInfo, 7, TimeUnit.DAYS);
+        }
+        // 利用Dozer进行bean到dto的转换
+        userInfoDto = dozerMapper.map(userInfo, UserInfoDto.class);
+        userInfoDto.setToken(token);
+        return userInfoDto;
+    }
+    /**
+     * 安卓登录逻辑
+     *
+     * @param code
+     * @return
+     * @throws IOException
+     */
+    @Override
+    public UserInfoDto loginAndroidService(String code) throws Exception {
+        LoginAndroidDTO loginAndroidDTO=new LoginAndroidDTO();
+        loginAndroidDTO.setCode(code);
+        String url="https://api.weixin.qq.com/sns/oauth2/access_token?" + "appid=" + loginAndroidDTO.getAppid() + "&secret=" + loginAndroidDTO.getSecret() + "&code=" + code + "&grant_type=authorization_code";
+        if(code == null || code.length() == 0){
+            throw new RuntimeException("对不起, code为空");
+        }
+        String accessToken=null;
+        String openId=null;
+        try {
+            JSONObject wechatAccessToken = HttpClientUtils.doGet(url);
+            accessToken = wechatAccessToken.getString("access_token");
+            openId = wechatAccessToken.getString("openid");
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        Map<String,String> userInfoMap= getUserInfoUtils.getUserInfoAndroid(accessToken,openId);
+//        String openId = userInfoMap.get("openId");
         String unionId = userInfoMap.get("unionId");
 //        String SessionKey = userInfoMap.get("SessionKey");
         Byte gender = Byte.valueOf(userInfoMap.get("gender"));

@@ -1,9 +1,14 @@
 package com.qinfenfeng.roadmeets.utils.common;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.qinfenfeng.roadmeets.dto.LoginAndroidDTO;
+import com.qinfenfeng.roadmeets.dto.UserInfoDto;
+import com.qinfenfeng.roadmeets.mbg.model.UserInfo;
 import com.qinfenfeng.roadmeets.utils.exception.CodeExcpetion;
 import com.qinfenfeng.roadmeets.utils.exception.FrequencyException;
 import lombok.extern.slf4j.Slf4j;
+import okhttp3.*;
 import org.apache.commons.codec.binary.Base64;
 import org.aspectj.apache.bcel.classfile.Code;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,6 +112,30 @@ public class GetUserInfoUtils {
         UserInfoMap.put("nickName", nickName);
         UserInfoMap.put("gender", String.valueOf(gender));
         return UserInfoMap;
+    }
+    public Map<String,String> getUserInfoAndroid(String accessToken, String openId){
+        Map<String, String> UserInfoMap = new HashMap<>();
+
+        String url="https://api.weixin.qq.com/sns/userinfo?" + "access_token="+accessToken+"&openid="+openId;
+
+        try  {
+            JSONObject userInfoObject = HttpClientUtils.doGet(url);
+            String unionId=userInfoObject.getString("unionid");
+            String gender=userInfoObject.getString("sex");
+            String nickName=userInfoObject.getString("nickname");
+            String avatarUrl=userInfoObject.getString("headimgurl");
+            UserInfoMap.put("openId", openId);
+            UserInfoMap.put("unionId", unionId);
+            UserInfoMap.put("avatarUrl", avatarUrl);
+            UserInfoMap.put("nickName", nickName);
+            UserInfoMap.put("gender", String.valueOf(gender));
+            return UserInfoMap;
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        return null;
+        //}
     }
 
 }
