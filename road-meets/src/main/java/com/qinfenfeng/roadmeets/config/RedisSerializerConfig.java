@@ -23,5 +23,4 @@ public class RedisSerializerConfig {
         HttpMessageConverter<?> converter = fastConverter;
         return new HttpMessageConverters(converter);
     }
-
 }

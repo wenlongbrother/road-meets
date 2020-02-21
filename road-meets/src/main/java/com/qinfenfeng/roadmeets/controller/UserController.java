@@ -71,5 +71,32 @@ public class UserController {
 
 
 
+    @Autowired
+    UserInfoMapper userInfoMapper;
+    @Autowired
+    TokenComponent tokenComponent;
+    UserInfo userInfoFist;
+    @Autowired
+    RedisTemplate redisTemplate;
+    private UserInfoDto userInfoDto;
+    @GetMapping("/test")
+    public boolean isExistInDB(String openId) {
+        //从数据库中查询是否存在此用户
+        UserInfo userInfoMySQL = userInfoMapper.selectByOpenId(openId);
+        if (userInfoMySQL != null) {
+            //使用userInfo的Id生成为期七天的Token
+            String token = null;
+            try {
+                token = tokenComponent.createJWTToken(userInfoMySQL.getId(), userInfoMySQL.getNickName(), 604800000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            UserComponent.addUser(userInfoMySQL);
+            redisTemplate.opsForValue().set(token, userInfoMySQL, 7, TimeUnit.DAYS);
+            System.out.println(token);
+            return true;
+        }
+        return false;
+    }
 
 }

@@ -100,6 +100,7 @@ public class FriendServiceImpl implements FriendService {
                 friendDto.setTeamId(team.getId());
                 friendDto.setCreator(friend.getFriendUserId());
                 friendDto.setTargetTime(team.getTargetTime());
+                friendDto.setScene(team.getScene());
                 if(team.getFinished() == 0){
                     friendDtos.add(friendDto);
                 }

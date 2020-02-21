@@ -12,8 +12,8 @@ import java.util.Date;
 @AllArgsConstructor
 public class ReleaseTeamDto implements Serializable {
     private Long id;
-    private Long originId;
-    private Long destinationId;
+    private Long originName;
+    private Long destinationName;
     private Date targetTime;
     private String scene;
 

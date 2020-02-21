@@ -56,6 +56,7 @@ public class TeamServiceImpl implements TeamService {
         UserInfo user = UserComponent.getUserInfo();
         Date date = new Date();
         Team team = dozerMapper.map(releaseTeamDto, Team.class);
+        // 先把地址信息放入数据库
         team.setGmtCreate(date);
         team.setGmtModified(date);
         team.setDeleted((byte) 0);
@@ -266,7 +267,7 @@ public class TeamServiceImpl implements TeamService {
         for(Long teamId : teamlocationDtos){
             // 从redis中根据userId获取用户的teamId;
             Team team = (Team) redisTemplate.opsForValue().get("teamId:" + teamId);
-            if(team.getDeleted() != 1 && team.getFinished() != 1) {
+            if(team.getDeleted() != 1 && team.getFinished() != 1 && !isFull(team)) {
                 teams.add(dozerMapper.map(team, AdviceTeamDto.class));
             }
         }
@@ -283,5 +284,16 @@ public class TeamServiceImpl implements TeamService {
         // 遍历所有的value并返回
         Collection<JoinTeamVo>values = entries.values();
         return values;
+    }
+
+    /**
+     * 判断队伍是否满员
+     * @param team
+     * @return
+     */
+    private boolean isFull(Team team){
+        Long teamId = team.getId();
+        TeamUserRel teamUserRel = teamUserRelMapper.selectByTeamId(new TeamInfoVo(teamId, (byte) 2));
+        return teamUserRel != null;
     }
 }

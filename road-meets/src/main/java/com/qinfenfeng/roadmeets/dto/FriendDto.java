@@ -21,4 +21,5 @@ public class FriendDto implements Serializable {
     private Long destinationId;
     protected Date targetTime;
     private Byte finished;
+    private String scene;
 }

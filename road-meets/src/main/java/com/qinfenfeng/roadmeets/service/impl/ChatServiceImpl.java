@@ -53,6 +53,16 @@ public class ChatServiceImpl implements ChatService {
 
     @Override
     public void groupChat(GroupChatDto groupChatDto) throws NoUserException {
+        Date date = new Date();
+        Message message = new Message();
+        message.setReaded((byte) 0);
+        message.setContent(groupChatDto.getContent());
+        message.setDeleted((byte) 0);
+        message.setGmtCreate(date);
+        message.setScene(null);
+        message.setSpeaker(Long.valueOf(groupChatDto.getUserId()));
+        // 把信息放入数据库
+        messageMapper.insert(message);
         // 获取在范围内的所有userId
         List<Long> userIds = geoHashUtil.nearBySearchUser(distance, groupChatDto.getLongitude(), groupChatDto.getLatitude());
         for(int i = 0; i < userIds.size(); i++){

@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Wxservice接口
- * @author 蒋文龙
  * @date 2020/1/20
  */
 @Transactional(isolation = Isolation.REPEATABLE_READ, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
