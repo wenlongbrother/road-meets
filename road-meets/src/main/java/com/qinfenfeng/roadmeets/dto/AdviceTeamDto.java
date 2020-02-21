@@ -18,4 +18,5 @@ public class AdviceTeamDto implements Serializable {
     protected Long destinationId;
     protected Date targetTime;
     protected String scene;
+    protected boolean isFull;
 }

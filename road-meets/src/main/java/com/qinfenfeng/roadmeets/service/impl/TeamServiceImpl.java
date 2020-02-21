@@ -268,7 +268,9 @@ public class TeamServiceImpl implements TeamService {
             // 从redis中根据userId获取用户的teamId;
             Team team = (Team) redisTemplate.opsForValue().get("teamId:" + teamId);
             if(team.getDeleted() != 1 && team.getFinished() != 1 && !isFull(team)) {
-                teams.add(dozerMapper.map(team, AdviceTeamDto.class));
+                AdviceTeamDto adviceTeamDto = dozerMapper.map(team, AdviceTeamDto.class);
+                adviceTeamDto.setFull(false);
+                teams.add(adviceTeamDto);
             }
         }
         return teams;

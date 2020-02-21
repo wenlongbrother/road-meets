@@ -4,13 +4,7 @@
     <list default="true" id="88a61dd5-a7bf-49ab-9d23-09724cb9dee3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/config/RedisSerializerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/config/RedisSerializerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/FriendDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/FriendDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/ReleaseTeamDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/ReleaseTeamDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/impl/ChatServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/impl/ChatServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/impl/FriendServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/impl/FriendServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/AdviceTeamDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/dto/AdviceTeamDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/impl/TeamServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qinfenfeng/roadmeets/service/impl/TeamServiceImpl.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -276,7 +270,7 @@
       <workItem from="1582190367844" duration="1045000" />
       <workItem from="1582267284868" duration="524000" />
       <workItem from="1582269126098" duration="209000" />
-      <workItem from="1582270966023" duration="536000" />
+      <workItem from="1582270966023" duration="1089000" />
     </task>
     <servers />
   </component>
